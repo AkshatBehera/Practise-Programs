@@ -1,0 +1,48 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    int a,x,y,z;
+    cin>>a;
+    for(x=a;x>=1;--x)
+    {
+        for(z=0;z<a-x;++z)
+        {
+            cout<<"  ";
+        }
+        for(y=x;y<=2*x-1;++y)
+        {
+            cout<<"* ";
+        }
+        for(y=0;y<x-1;++y)
+        { 
+            cout<<"* ";
+        }
+        cout<<"\n";
+    }
+    return 0;
+}
+
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    int a,x,y,z;
+    char star = '*';
+    cin>>a;
+    for(x=a;x>=0;x--)
+    {
+        for(z=0;z<a-x;++z)
+        {
+            cout<<" ";
+        }
+        for(y=0;y<x;y++)
+        {
+            cout<<star<<" ";
+        }
+         cout<<"\n";
+    }
+    return 0;
+}

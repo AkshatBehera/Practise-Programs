@@ -1,0 +1,28 @@
+import math;
+
+class Solution:
+    def solve(self, A, B, C):
+        # write your method here
+        minimum = 50000*5000
+        temp_1 = temp_2 = -50
+        for i in range(len(A)):
+            currentElement = A[i]
+            closest_1 = 50000*5000
+            index_1 = index_2 = 0
+            closest_2 = 50000*5000
+            for j in range (len(B)):
+                if(abs(B[j]-currentElement) < closest_1):
+                    closest_1 = abs(B[j]- currentElement)
+                    index_1 = j
+            for k in range (len(C)):
+                if(abs(C[k] - B[index_1]) < closest_2):
+                    closest_2 = abs(C[k]- B[index_1])
+                    index_2 = k
+            #print(A[i], " ", B[index_1], " ", C[index_2])
+            diff = abs(max(A[i], B[index_1], C[index_2]) - min(A[i], B[index_1], C[index_2]))
+            if diff == 0:
+                return 0
+            if (diff < minimum):
+                minimum = diff
+            
+        return minimum

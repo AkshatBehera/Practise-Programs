@@ -1,0 +1,115 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int n;
+    cin >> n;
+    int numberOfRounds = n / 2;
+    long long int matrix[n][n];
+    // for (int i = 0; i < n; i++)
+    // {
+    //     for (int j = 0; j < n; j++)
+    //     {
+    //         matrix[i][j] = 0;
+    //         cout << matrix[i][j];
+    //     }
+    //     cout << "\n";
+    // }
+
+    // cout << "\nfinal matrix \n";
+
+    long int round = n / 2;
+    int number = 1;
+    long int powerPoints = 1;
+    long long int s = 1;
+    long long int x_store[1000], y_store[1000];
+    for (int k = 0; k <= round; k++)
+    {
+
+        long long int initial_index_i = k, initial_index_j = k, final_index_i = n - (k + 1), final_index_j = n - (k + 1);
+        for (long long int j = initial_index_j; j <= final_index_j; j++)
+        {
+            matrix[initial_index_i][j] = number;
+
+            if (number % 11 == 0)
+            {
+                powerPoints++;
+                x_store[s] = initial_index_i;
+                y_store[s] = j;
+                s++;
+            }
+            number++;
+            // x_store[s] = initial_index_i;
+            // y_store[s] = j;
+            // s++;
+        }
+
+        for (long long int i = initial_index_i + 1; i <= final_index_i; i++)
+        {
+            matrix[i][final_index_j] = number;
+
+            if (number % 11 == 0)
+            {
+                powerPoints++;
+                x_store[s] = i;
+                y_store[s] = final_index_j;
+                s++;
+            }
+            number++;
+            // x_store[s] = i;
+            // y_store[s] = final_index_j;
+            // s++;
+        }
+
+        for (long long int j = final_index_j - 1; j >= initial_index_j; j--)
+        {
+            matrix[final_index_i][j] = number;
+
+            if (number % 11 == 0)
+            {
+                powerPoints++;
+                x_store[s] = final_index_i;
+                y_store[s] = j;
+                s++;
+            }
+            number++;
+            // x_store[s] = final_index_i;
+            // y_store[s] = j;
+            // s++;
+        }
+
+        for (long long int i = final_index_i - 1; i > initial_index_i; i--)
+        {
+            matrix[i][initial_index_j] = number;
+
+            if (number % 11 == 0)
+            {
+                powerPoints++;
+                x_store[s] = i;
+                y_store[s] = initial_index_j;
+                s++;
+            }
+            number++;
+            // x_store[s] = i;
+            // y_store[s] = initial_index_j;
+            // s++;
+        }
+    }
+
+    for (long long int i = 0; i < n; i++)
+    {
+        for (long long int j = 0; j < n; j++)
+        {
+            cout << matrix[i][j]
+                 << "\t";
+        }
+        cout << "\n";
+    }
+    cout << "Total Power points : " << powerPoints << "\n";
+    for (long long int i = 0; i < s; i++)
+    {
+        cout << "(" << x_store[i] << "," << y_store[i] << ")\n";
+    }
+    return 0;
+}

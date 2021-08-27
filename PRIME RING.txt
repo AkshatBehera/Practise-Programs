@@ -1,0 +1,46 @@
+#include <cmath>
+#include <cstdio>
+#include <iostream>
+
+using namespace std;
+
+int T = 0, n;
+int c[20];
+bool completed[20];
+
+bool checkPrime(int p)
+{
+    for (int i = 2; i <= sqrt(p); i++)
+        if (p % i == 0)
+            return false;
+    return true;
+}
+
+void b(int m)
+{
+    if (m == n - 1 && checkPrime(c[n - 1] + c[n]))
+    {
+        for (int i = 0; i < n; i++)
+            printf(i == n - 1 ? "%d" : "%d ", c[i]);
+        printf("\n");
+        return;
+    }
+    for (int i = 2; i <= n; i++)
+        if (!completed[i] && checkPrime(c[m] + i))
+        {
+            completed[i] = true;
+            c[m + 1] = i;
+            b(m + 1);
+            completed[i] = false;
+        }
+}
+
+int main()
+{
+    cin >> n;
+    // G++;
+    // if (G > 1)
+    //     printf("\n");
+    c[0] = c[n] = 1;
+    b(0);
+}

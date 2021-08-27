@@ -1,0 +1,119 @@
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+
+#define ll long long int
+
+int main()
+{
+    ll N;
+    cin >> N;
+    for (int i = 0; i < N; i++)
+    {
+        ll n;
+        cin >> n;
+        ll arr[n];
+        for (ll i = 0; i < n; i++)
+        {
+            cin >> arr[i];
+        }
+        // for (int i = 0; i < n; i++)
+        // {
+        //     cout << arr[i] << " ";
+        // }
+        // cout << "\ncrusts and troughs\n";
+        ll maximum_crust = INT_MIN, minimum_crust = 1000 * 20000;
+        ll maximum_trough = INT_MIN, minimum_trough = 1000 * 20000;
+        ll max_crust_index, min_crust_index, max_trough_index, min_trough_index;
+        for (ll i = 1; i < n - 1; i++)
+        {
+            //this is a crust
+            if (arr[i] > arr[i + 1] && arr[i] > arr[i - 1])
+            {
+                //this is to caliculate maximum crust
+                if (abs(arr[i] - arr[i + 1]) >= maximum_crust || abs(arr[i] - arr[i - 1]) >= maximum_crust)
+                {
+                    if (abs(arr[i] - arr[i + 1]) > abs(arr[i] - arr[i - 1]))
+                    {
+                        maximum_crust = abs(arr[i] - arr[i + 1]);
+                        max_crust_index = i;
+                    }
+                    else
+                    {
+                        maximum_crust = abs(arr[i] - arr[i - 1]);
+                        max_crust_index = i;
+                    }
+                }
+
+                //this is to caliculate minimum crust
+                if (abs(arr[i] - arr[i + 1]) < minimum_crust || abs(arr[i] - arr[i - 1]) < minimum_crust)
+                {
+                    if (abs(arr[i] - arr[i + 1]) < abs(arr[i] - arr[i - 1]))
+                    {
+                        minimum_crust = abs(arr[i] - arr[i + 1]);
+                        min_crust_index = i;
+                    }
+                    else
+                    {
+                        minimum_crust = abs(arr[i] - arr[i - 1]);
+                        min_crust_index = i;
+                    }
+                }
+                // cout << "crust:\t" << arr[i] << "\n";
+            }
+            //this is a trough
+            if (arr[i] < arr[i + 1] && arr[i] < arr[i - 1])
+            {
+                //this is to caliculate maximum trough
+                if (abs(arr[i + 1] - arr[i]) >= maximum_trough || abs(arr[i - 1] - arr[i]) >= maximum_trough)
+                {
+                    if (abs(arr[i + 1] - arr[i]) > abs(arr[i - 1] - arr[i]))
+                    {
+                        maximum_trough = abs(arr[i + 1] - arr[i]);
+                        max_trough_index = i;
+                    }
+                    else
+                    {
+                        maximum_trough = abs(arr[i - 1] - arr[i]);
+                        max_trough_index = i;
+                    }
+                }
+
+                //this is to caliculate minimum trough
+                if (abs(arr[i + 1] - arr[i]) < minimum_trough || abs(arr[i - 1] - arr[i]) < minimum_trough)
+                {
+                    if (abs(arr[i + 1] - arr[i]) < abs(arr[i - 1] - arr[i]))
+                    {
+                        minimum_trough = abs(arr[i + 1] - arr[i]);
+                        min_trough_index = i;
+                    }
+                    else
+                    {
+                        minimum_trough = abs(arr[i - 1] - arr[i]);
+                        min_trough_index = i;
+                    }
+                }
+
+                // cout << "trough:\t" << arr[i] << "\n";
+            }
+        }
+        ll temp;
+        if (minimum_crust == 1000 * 20000 || minimum_trough == 1000 * 20000 || maximum_crust == -1000 * 20000 || maximum_trough == -1000 * 20000)
+        {
+            temp = -1;
+        }
+        else
+        {
+            temp = (max_crust_index - min_crust_index > abs(max_trough_index - min_trough_index) ? abs(max_crust_index - min_crust_index) : abs(max_trough_index - min_trough_index));
+            temp = abs(temp);
+        }
+        // cout << "maximum_crust: " << maximum_crust << "\tindex: " << max_crust_index << "\n";
+        // cout << "minimim_crust: " << minimum_crust << "\tindex: " << min_crust_index << "\n\n";
+        // cout << "maximum_trough: " << maximum_trough << "\tindex: " << max_trough_index << "\n";
+        // cout << "minimum_trough: " << minimum_trough << "\tindex: " << min_trough_index << "\n";
+
+        cout << temp << "\n";
+    }
+
+    return 0;
+}

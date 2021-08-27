@@ -1,0 +1,23 @@
+t = int(input())
+while t:
+    e = [int(i) for i in input().split()]
+    n = e[0]
+    e = e[1:]
+    k = int(input())
+    l = 0
+    h = n//2+1
+    flag = 0
+    while l<h and h<n and l<n:
+        d = e[h]-e[l]
+        if d > k:
+            l+=1
+        elif d < k:
+            h+=1
+        else:
+            flag = 1
+            break
+    if flag == 1:
+        print(1)
+    else:
+        print(0)
+    t-=1

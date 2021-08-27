@@ -1,0 +1,30 @@
+def diffSum(middle,e,bags):
+    bag = 1
+    weight = 0
+    for i in e:
+        if i>middle:
+            return False
+        weight += i
+        if weight > middle:
+            bag+=1
+            weight = i
+    if bag <= bags:
+        return True
+    return False
+
+t = int(input())
+while t:
+    n,bags = [int(i) for i in input().split()]
+    e = [int(i) for i in input().split()]
+    small = 1
+    large = sum(e)
+    splitPoint = 0
+    while small <= large:
+        middle = (small+large)//2
+        if diffSum(middle,e,bags):
+            splitPoint = middle
+            large = middle - 1
+        else:
+            small = middle + 1
+    print(splitPoint)
+    t-=1

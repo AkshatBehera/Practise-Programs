@@ -1,0 +1,41 @@
+def dancingpattern(a):
+
+    y = a   #containing replaced value
+
+    x=[0]*len(a)   #used as a buffer
+
+    count=0
+
+    while(x!=a):
+
+        count+=1
+
+        x=[0]*len(a)    #refresh the x
+
+        for i in range(len(a)):
+
+            x[a[i]-1] = y[i]
+
+        y=x
+
+    return(count)
+
+ 
+
+ 
+
+T = int(input())     #no of test cases
+
+for i in range(T):
+
+    n = int(input())
+
+    monkeys = list(map(int,input().split()))  #monkeys[]
+
+    result = dancingpattern(monkeys)
+
+    print(result)
+
+
+
+

@@ -1,0 +1,14 @@
+import math
+class Solution:
+    def prime(self,a):
+        
+        for i in range(2,int(math.sqrt(a))+1):
+            if a%i == 0: return False
+            
+        return True
+    def primesum(self, A):
+        # write your method here
+       
+        for i in range(2,A//2 +1):
+            if(self.prime(i) and self.prime(A-i)):
+                return (i,A-i)

@@ -1,0 +1,16 @@
+import itertools
+
+class Solution:
+    def cmp(self,a,b):
+        ab = str(a) + str(b)
+        ba = str(b) + str(a)
+        if ab>ba:
+            return False
+        else:
+            return True
+    def largestNumber(self, A):
+        for i in range(len(A)):
+            for j in range(i+1,len(A)):
+                if self.cmp(A[i],A[j]):
+                    A[i],A[j] = A[j],A[i]
+        return ''.join([str(i) for i in A])

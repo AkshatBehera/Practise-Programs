@@ -1,0 +1,56 @@
+def converter(number, base):
+    tot="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    #split number in figures
+    figures = [tot.find(i) for i in str(number)]
+    #invert oder of figures (lowest count first)
+    figures = figures[::-1]
+    result = 0
+    #loop over all figures
+    for i in range(len(figures)):
+        #add the contirbution of the i-th figure
+        result += figures[i]*base**i
+    return result
+
+
+def isPrime(n):
+    if (n == 2): 
+        return True
+    elif n%2 == 0:
+        return False 
+    else:
+        for i in range (3, n//2, 2):
+            if n%i == 0:
+                return False
+    return True
+
+def toBase(n, b):
+    tot="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    if n == 0:
+        return 0
+    digits = ""
+    while n:
+        digits = digits + tot[int(n % b)]
+        n //= b
+    return digits[::-1]
+
+tot="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+t = int(input())
+while(t):
+    X = input().split()
+    S= X[1]
+    N = X[0]
+    leastbase = 0
+    for i in N:
+        leastbase = max(leastbase,tot.find(i)+1)
+    #S=input()
+    bas=tot.find(S)
+    mini=converter(N,leastbase)
+    Splus=bas+1
+    
+    while True:
+        if isPrime(mini)==True and S in toBase(mini,Splus):
+            #print(mini)
+            print(toBase(mini,Splus))
+            break
+        mini+=1
+    t -= 1

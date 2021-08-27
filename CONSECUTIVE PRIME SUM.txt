@@ -1,0 +1,35 @@
+import math
+n = int(input())
+m = 0
+a = []
+p = []
+v = []
+def prime(k):
+    for i in range(2,int(math.sqrt(k))+1):
+        if(k%i==0): return False
+    return True
+for i in range(n):
+    a.append(int(input()))
+    if(a[i]>m): m = a[i]
+
+for i in range(2,m):
+    if(prime(i)):
+        p.append(i)
+
+for i in range(n):
+    c = 0
+    for j in p:
+        if a[i]<=j: break
+        s = 0
+        for l in p:
+            if s>=j:
+                break
+            s+=l
+        if(s == j and s !=2):
+            v.append(j)
+            c+=1
+    print(c)
+
+
+
+

@@ -1,0 +1,17 @@
+n = int(input())
+for i in range(n):
+    words = input().strip().split(" ")
+    for word in words:
+        if(len(word)>2): word = word[0:1]+word[1:len(word)-1][::-1]+word[len(word)-1:]
+        if(len(word)!=0):print(word,end=" ")
+    print()
+
+
+n = int(input())
+for i in range(n):
+    m = input().strip().split(" ")
+    for i in m:
+        if(len(i)>2): i = i[0:1]+i[1:len(i)-1][::-1]+i[len(i)-1:]
+        if(len(i)!=0):print(i,end=" ")
+    print()
+

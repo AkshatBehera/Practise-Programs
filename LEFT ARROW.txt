@@ -1,0 +1,99 @@
+#include <iostream>
+using namespace std;
+
+int main () {
+    int n;
+    cin >> n;
+    int temp = 0;
+    bool decreasing = true;
+    int count = 2;
+    for (int i = 0; i < (2*n); i++) {
+        for (int j = 0; j < 2*(2*n); j++) {
+                if (i == n) {
+                    decreasing = false;
+                    count = 2;
+                }
+                if (decreasing) {
+                    if (j > (4*n -1) - temp) {
+                    cout << " ";
+                    } else {
+                        if (j%2 == 0) {
+                            cout << "*";    
+                        } else {
+                            cout << " ";
+                        }   
+                    }                    
+                }
+                if (!decreasing) {
+                    if (j > count) {
+                        cout << " ";
+                    }
+                    else {
+                        if (j%2 == 0) {
+                            cout << "*";    
+                        } else {
+                            cout << " ";
+                        }                         
+                    }
+
+                }
+
+        }
+        temp += 4;
+        if (!decreasing) {
+            count +=4;
+        }
+        cout << "\n";
+    }
+    return 0;
+}
+
+#include <iostream>
+using namespace std;
+
+int main () {
+    int n;
+    cin >> n;
+    int z = 0;
+    bool d = true;
+    int count = 2;
+    for (int i = 0; i < (2*n); i++) {
+        for (int j = 0; j < 2*(2*n); j++) {
+                if (i == n) {
+                    d = false;
+                    count = 2;
+                }
+                if (d) {
+                    if (j > (4*n -1) - z) {
+                    cout << " ";
+                    } else {
+                        if (j%2 == 0) {
+                            cout << "*";    
+                        } else {
+                            cout << " ";
+                        }   
+                    }                    
+                }
+                if (!d) {
+                    if (j > count) {
+                        cout << " ";
+                    }
+                    else {
+                        if (j%2 == 0) {
+                            cout << "*";    
+                        } else {
+                            cout << " ";
+                        }                         
+                    }
+
+                }
+
+        }
+        z += 4;
+        if (!d) {
+            count +=4;
+        }
+        cout << "\n";
+    }
+    return 0;
+}

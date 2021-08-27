@@ -1,0 +1,24 @@
+def f(n):
+    if(n==1 or n==2):
+        return 1
+    if n==3:
+        return 2
+    
+    f1 = 1
+    f2 = 1
+    f3 = 2
+    fn = 0
+    for i in range(4,n+1):
+        fn = (f1+f3)%((10**9)+7)
+        f1=f2
+        f2=f3
+        f3=fn
+    return fn
+        
+n = int(input())
+k = f(n)
+print(k)
+
+
+
+

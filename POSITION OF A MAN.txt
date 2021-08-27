@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+
+int main () {
+    int x_coordinate = 0, y_coordinate = 0;
+   
+    int numberOfMoves;
+    cin >> numberOfMoves;
+    int dir[6] = { 1, 2, 3, 4, 1};
+    int distance[6] = {10, 20, 30, 40, 50};
+    for (int i = 0; i < numberOfMoves; i++) {
+        int dis;
+        int currentDirection;
+  
+            dis = distance[i%5];
+      
+            currentDirection = dir[i%5];
+  
+
+
+
+        switch (currentDirection) {
+            case 1: 
+                x_coordinate += dis;
+                break;
+            case 2:
+                y_coordinate += dis;
+                break;
+            case 3: 
+                x_coordinate -= dis;
+                break;
+            case 4:
+                y_coordinate -= dis;
+                break;
+           	default:
+                break;
+        }
+
+    }
+    cout << x_coordinate << " "<<  y_coordinate << "\n";
+
+    return 0;
+}

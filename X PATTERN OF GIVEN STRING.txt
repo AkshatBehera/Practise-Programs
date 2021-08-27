@@ -1,0 +1,29 @@
+#include <iostream>
+
+using namespace std;
+
+int main () {
+   	string word;
+    cin >> word;
+    int matrixSteep = word.length(), index = 0;
+    int matrix[matrixSteep][matrixSteep];
+    if (matrixSteep%2 == 0) {
+        cout << "INVALID";
+    } else {
+      for (int i = 0; i < matrixSteep; i++) {
+        for (int j = 0; j < matrixSteep; j++) {
+            if (i == j) {
+                cout << word[i];
+            } else if (((i+j) + 1) == matrixSteep) {
+                cout << word[(matrixSteep - 1) - i];
+            }
+            else {
+                cout << " ";
+            }
+        }
+        cout << "\n";
+      }  
+    }
+
+    return 0;
+}

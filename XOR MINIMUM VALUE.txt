@@ -1,0 +1,17 @@
+int getXOR(int x, int y)
+{
+return (x | y) & (~x | ~y);
+}
+
+
+struct Solution {
+  int findMinXor(vector<int> &A) {
+      /* write your solution here */
+      sort(A.begin(), A.end());
+      int minimum = 1000*20;
+      for (int i = 0; i < A.size() - 1; i++){
+         if (minimum > getXOR(A[i], A[i+1])) minimum = getXOR(A[i], A[i+1]);
+      }
+      return minimum;
+  }
+};

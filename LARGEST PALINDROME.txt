@@ -1,0 +1,81 @@
+#include <iostream>
+using namespace std;
+
+
+bool checkPalendrome (string word) {
+    for (int i = 0; i < word.length()/2; i++) {
+        if (word[i] != word[word.length() - (i+1)]) return false;
+    }
+    return true;
+}
+
+
+int main () {
+    int n;
+    cin >> n;
+    string arr[n];
+    string currentPalendrome, largestPalendrome = "";
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+        if (checkPalendrome(arr[i])) {
+            currentPalendrome = arr[i];
+            if (largestPalendrome.length() < currentPalendrome.length()) {
+                largestPalendrome = currentPalendrome;
+            }
+            if (largestPalendrome.length() == currentPalendrome.length()) {
+                if (largestPalendrome > currentPalendrome) {
+                    largestPalendrome = currentPalendrome;
+                }
+            }
+        }
+    }
+    if (largestPalendrome.length() == 0) {
+        cout << "-1";
+    } else {
+		cout << largestPalendrome;
+    }
+    
+    return 0;
+}
+
+
+
+#include <iostream>
+using namespace std;
+
+
+bool chck (string m) {
+    for (int i = 0; i < m.length()/2; i++) {
+        if (m[i] != m[m.length() - (i+1)]) return false;
+    }
+    return true;
+}
+
+
+int main () {
+    int n;
+    cin >> n;
+    string a[n];
+    string cp, lp = "";
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+        if (chck(a[i])) {
+            cp = a[i];
+            if (lp.length() < cp.length()) {
+                lp = cp;
+            }
+            if (lp.length() == cp.length()) {
+                if (lp > cp) {
+                    lp = cp;
+                }
+            }
+        }
+    }
+    if (lp.length() == 0) {
+        cout << "-1";
+    } else {
+		cout << lp;
+    }
+    
+    return 0;
+}

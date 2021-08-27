@@ -1,0 +1,29 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    int n,m=-1000;
+    //cout<<"enter size of array:";
+    cin>>n;
+    int a[n];
+    //cout<<"enter elements";
+    for(int i=0;i<n;i++)
+    {
+        cin>>a[i];
+    }
+    for(int i=0;i<n;i++)
+    {
+        if(m<a[i])
+        {
+            m=a[i];
+        }
+        
+    }
+    cout<<m;
+   return 0;
+}
+
+
+
+

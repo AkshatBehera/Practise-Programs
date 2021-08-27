@@ -1,0 +1,10 @@
+class Solution:
+    def plusOne(self, A):
+        s = ''
+        for i in A:
+            s = s + str(i)
+        n = str(int(s) + 1)
+        ans = []
+        for i in n:
+            ans.append(i)
+        return ans
